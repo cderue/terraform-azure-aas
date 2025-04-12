@@ -1,16 +1,33 @@
-# Terraform No-Code Infrastructure Module for Azure App Service
+# Terraform No-Code Infrastructure Module for Azure App Service (Node.js)
 
-The Terraform No-Code Infrastructure Module for Azure App Service streamlines the deployment and management of web applications on Azure without requiring Terraform expertise. This module provides a configuration-driven approach to provisioning highly available, scalable, and secure web applications.
+The Terraform No-Code Infrastructure Module for Azure App Service simplifies deployment of Node.js applications on Azure App Service with a configuration-driven approach.
 
 ## Key features:
-- No-code deployment – Deploy web apps using simple configuration files without writing Terraform scripts.
-- Flexible hosting – Supports multiple runtimes, including .NET, Node.js, Python, Java, and PHP.
-- Built-in scaling – Autoscale web applications based on traffic and performance metrics.
-- Security & compliance – Integrates with managed identities, private networking, and authentication providers (Azure AD, Google, Facebook, etc.).
-- CI/CD Integration – Automates deployments via GitHub Actions, Azure DevOps, or other pipelines.
+- No-code deployment - Provision Azure App Service resources through variables only.
+- Node.js runtime configuration - Configure the Node.js stack version for Linux Web Apps.
+- Secure defaults - HTTPS-only web app with a system-assigned managed identity.
+- Flexible app configuration - Pass custom app settings and startup command.
+- Consistent tagging - Applies environment and app tags to all resources.
 
-## Use cases:
-- Hosting web applications, REST APIs, and mobile app backends.
-- Migrating traditional applications to a managed cloud platform.
-- Automating infrastructure provisioning for DevOps teams.
+## Resources provisioned:
+- Azure Resource Group
+- Azure App Service Plan (Linux)
+- Azure Linux Web App
+
+## Required inputs:
+- `location` - Azure region
+- `env` - Deployment environment name
+- `app` - Application name
+
+## Optional inputs:
+- `node_version` (default: `20-lts`)
+- `app_service_plan_sku` (default: `B1`)
+- `always_on` (default: `true`)
+- `app_command_line` (default: empty)
+- `app_settings` (default: empty map)
+
+## Outputs:
+- `resource_group_name`
+- `app_service_plan_id`
+- `azurerm_linux_web_app_url`
 
