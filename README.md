@@ -1,5 +1,7 @@
 # Terraform No-Code Infrastructure Module for Azure App Service (Node.js)
 
+[![Terraform CI](https://github.com/cderue/terraform-azure-aas/actions/workflows/terraform-ci.yml/badge.svg)](https://github.com/cderue/terraform-azure-aas/actions/workflows/terraform-ci.yml)
+
 The Terraform No-Code Infrastructure Module for Azure App Service simplifies deployment of Node.js applications on Azure App Service with a configuration-driven approach.
 
 ## Key features:
@@ -30,4 +32,28 @@ The Terraform No-Code Infrastructure Module for Azure App Service simplifies dep
 - `resource_group_name`
 - `app_service_plan_id`
 - `azurerm_linux_web_app_url`
+
+## CI
+
+This repository includes a GitHub Actions workflow in `.github/workflows/terraform-ci.yml`.
+
+It runs:
+- `terraform fmt -check -recursive`
+- `terraform init -backend=false`
+- `terraform validate`
+
+Validation is executed for:
+- Root module (`.`)
+- `examples/basic`
+- `examples/custom-node-and-settings`
+- `examples/production`
+
+## Examples
+
+Runnable use cases are available in `examples/`:
+- `examples/basic`: minimal required inputs.
+- `examples/custom-node-and-settings`: customized Node.js runtime, startup command, SKU, and app settings.
+- `examples/production`: production-oriented setup with premium App Service Plan SKU.
+
+See `examples/README.md` for quick start instructions.
 

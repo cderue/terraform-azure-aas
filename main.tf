@@ -46,8 +46,8 @@ resource "azurerm_linux_web_app" "web" {
 
   app_settings = merge(
     {
-      NODE_ENV                        = var.env
-      SCM_DO_BUILD_DURING_DEPLOYMENT = "true"
+      NODE_ENV                            = var.env
+      SCM_DO_BUILD_DURING_DEPLOYMENT      = "true"
       WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
     },
     var.app_settings
